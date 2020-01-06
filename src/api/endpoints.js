@@ -10,11 +10,14 @@ application.interceptors.request.use((config) => {
     const token = localStorage.getItem('access_token')
     // console.log(jwt(token).exp)
     const c = config
+    console.log('See', token)
     if (token) {
         c.headers.Authorization = `Bearer ${token}`
     }
     return c
 }, (error) => {
-    console.log(error)
+    alert('SSSS')
+    console.log('SSSS', error)
+    // application.post('token_refresh')
     return Promise.reject(error)
 })

@@ -8,7 +8,7 @@ import AccountOptions from '@/components/AccountOptions'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '*',
@@ -36,3 +36,20 @@ export default new Router({
         }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+    console.log(1)
+    if (!localStorage.getItem('access_token') && to.path !== '/login') {
+        next({
+            path: '/login',
+            name: 'LoginPage',
+            component: LoginPage,
+            params: { nextUrl: to.fullPath }
+        })
+        location.reload()
+    } else {
+        next()
+    }
+})
+
+export default router

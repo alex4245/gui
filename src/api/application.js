@@ -12,6 +12,10 @@ export function registrationToSystem(params) {
     return application.post('registration', params)
 }
 
+export function refreshToken() {
+    return application.post('token_refresh')
+}
+
 export function getUserData() {
     return application.get('get_user_data')
 }

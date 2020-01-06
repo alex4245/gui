@@ -48,11 +48,6 @@ export default {
             username: 'authStore/username'
         })
     },
-    updated() {
-        if (!this.isLoggedIn && this.$router.history.current.name !== 'RegistrationPage') {
-            this.$router.push({ name: 'LoginPage' })
-        }
-    },
     created() {
         if (!this.isLoggedIn && this.$router.history.current.name !== 'RegistrationPage') {
             this.$router.push({ name: 'LoginPage' })
